@@ -31,7 +31,7 @@
         </li>
       <!-- @else -->
         <li class="nav-item">
-          <a class="nav-link" href="#">Sign up</a>
+          <a class="nav-link" href="{{ route('auth.signup') }}">Sign up</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Sign in</a>
