@@ -27,7 +27,7 @@
           <a class="nav-link" href="#">Update profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Sign out</a>
+          <a class="nav-link" href="{{ route('auth.signout') }}">Sign out</a>
         </li>
       @else
         <li class="nav-item">
