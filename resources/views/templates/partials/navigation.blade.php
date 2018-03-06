@@ -21,7 +21,7 @@
     <ul class="navbar-nav mr-auto">
       @if (Auth::check())
         <li class="nav-item">
-          <a class="nav-link" href="#">{{ Auth::user()->getNameOrUsername() }}</a>
+          <a class="nav-link" href="{{ route('profile.index', ['username' => Auth::user()->username]) }}">{{ Auth::user()->getNameOrUsername() }}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Update profile</a>
