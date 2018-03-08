@@ -24,7 +24,7 @@
           <a class="nav-link" href="{{ route('profile.index', ['username' => Auth::user()->username]) }}">{{ Auth::user()->getNameOrUsername() }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Update profile</a>
+          <a class="nav-link" href="{{ route('profile.edit') }}">Update profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('auth.signout') }}">Sign out</a>
