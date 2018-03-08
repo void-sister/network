@@ -5,10 +5,10 @@
     @if (Auth::check())
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Timeline</a>
+          <a class="nav-link" href="{{ route('home') }}">Timeline</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Friends</a>
+          <a class="nav-link" href="{{ route('friend.index') }}">Friends</a>
         </li>
       </ul>
 
