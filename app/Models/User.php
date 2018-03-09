@@ -73,17 +73,17 @@ class User extends Authenticatable
 
     public function friends()
     {
-      return $this->friendsOfMine()->wherePivot('accepted', 1)->get()->merge($this->friendOf()->wherePivot('accepted', 1)->get());
+      return $this->friendsOfMine()->wherePivot('accepted', true)->get()->merge($this->friendOf()->wherePivot('accepted', true)->get());
     }
 
     public function friendRequests()
     {
-      return $this->friendsOfMine()->wherePivot('accepted', 0)->get();
+      return $this->friendsOfMine()->wherePivot('accepted', false)->get();
     }
 
     public function friendRequestsPending()
     {
-      return $this->friendOf()->wherePivot('accepted', 0)->get();
+      return $this->friendOf()->wherePivot('accepted', false)->get();
     }
 
     public function hasFriendRequestPending(User $user)
@@ -104,7 +104,7 @@ class User extends Authenticatable
     public function acceptFriendRequest(User $user)
     {
       $this->friendRequests()->where('id', $user->id)->first()->pivot->update([
-        'accepted' => 1,
+        'accepted' => true,
       ]);
     }
 
