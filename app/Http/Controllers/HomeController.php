@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+use Auth; 
 
 class HomeController extends Controller
 {
