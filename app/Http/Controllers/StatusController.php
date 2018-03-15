@@ -26,12 +26,12 @@ class StatusController extends Controller
 
   public function postReply(Request $request, $statusId)
   {
-    // $this->validate($request, [
-    //   "reply-{$statusId}" => 'required|max:1000',
-    // ], [
-    //   'required' => 'The reply body is required.'
-    // ]);
-    //
+    $this->validate($request, [
+      "reply-{$statusId}" => 'required|max:1000',
+    ], [
+      'required' => 'The reply body is required.'
+    ]);
+    
     $status = Status::notReply()->find($statusId);
 
     if (!$status) {
@@ -52,6 +52,26 @@ class StatusController extends Controller
     ])->user()->associate(Auth::user());
 
     $status->replies()->save($reply);
+
+    return redirect()->back();
+  }
+
+  public function getLike($statusId)
+  {
+    $status = Status::find($statusId);
+
+    if (!$status)
+    {
+      return redirect()->route('home');
+    }
+
+    if (Auth::user()->hasLikedStatus($status))
+    {
+      return redirect()->back();
+    }
+
+    $like = $status->likes()->create([]);
+    Auth::user()->likes()->save($like);
 
     return redirect()->back();
   }
