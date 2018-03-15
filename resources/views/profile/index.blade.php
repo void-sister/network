@@ -42,7 +42,7 @@
             @endforeach
 
             <!-- this is the only if statement that is not like on timeline.index -->
-            @if ($authUserIsFriend || Auth::user()->id === $status->id)
+            @if ($authUserIsFriend || Auth::user()->id === $status->user->id)
             <form role="form" action="{{ route('status.reply', ['statusId' => $status->id]) }}" method="post">
               <div class="form-group">
                 <textarea name="reply-{{ $status->id }}"
