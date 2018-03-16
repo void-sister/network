@@ -31,7 +31,7 @@ class StatusController extends Controller
     ], [
       'required' => 'The reply body is required.'
     ]);
-    
+
     $status = Status::notReply()->find($statusId);
 
     if (!$status) {
@@ -70,7 +70,11 @@ class StatusController extends Controller
       return redirect()->back();
     }
 
-    $like = $status->likes()->create([]);
+    $like = $status->likes()->create([
+      'user_id' => Auth::user()->id,
+      'likeable_id' => $statusId,
+      'likeable_type' => get_class($status)
+    ]);
     Auth::user()->likes()->save($like);
 
     return redirect()->back();

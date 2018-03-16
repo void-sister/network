@@ -21,7 +21,7 @@
             <ul class="list-inline">
               <li class="list-inline-item">{{ $status->created_at->diffForHumans() }}</li>
               <li class="list-inline-item"><a href="{{ route('status.like', ['statusId' => $status->id]) }}">Like</a></li>
-              <li class="list-inline-item">10 likes</li>
+              <li class="list-inline-item">{{ $status->likes->count() }} {{ str_plural('like', $status->likes->count()) }}</li>
             </ul>
 
             @foreach ($status->replies as $reply)
@@ -35,7 +35,7 @@
                 <ul class="list-inline">
                   <li class="list-inline-item">{{ $reply->created_at->diffForHumans() }}</li>
                   <li class="list-inline-item"><a href="{{ route('status.like', ['statusId' => $reply->id]) }}">Like</a></li>
-                  <li class="list-inline-item">4 likes</li>
+                  <li class="list-inline-item">{{ $reply->likes->count() }} {{ str_plural('like', $reply->likes->count()) }}</li>
                 </ul>
               </div>
             </div>
